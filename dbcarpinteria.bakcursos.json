@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6655f69fdd4dd328056ec5bd"
+  },
+  "titulo": "Introduccion",
+  "img": "img.png",
+  "temas": {
+    "tema1": {
+      "id": 1,
+      "titulo": "Proyecto a realizar",
+      "descripcion": "-"
+    },
+    "tema2": {
+      "id": 2,
+      "titulo": "Herramientas y materiales",
+      "descripcion": "-"
+    },
+    "tema3": {
+      "id": 3,
+      "titulo": "Elementos de seguridad",
+      "descripcion": "-"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6655f8b4dd4dd328056ec5be"
+  },
+  "titulo": "Seleccion de materiales",
+  "img": "img.png",
+  "temas": {
+    "tema1": {
+      "id": 4,
+      "titulo": "Seleccion de madera",
+      "descripcion": "-"
+    },
+    "tema2": {
+      "id": 5,
+      "titulo": "Caracteristicas del Plywood",
+      "descripcion": "-"
+    },
+    "tema3": {
+      "id": 6,
+      "titulo": "Toma de medidas",
+      "descripcion": "-"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6655f925dd4dd328056ec5bf"
+  },
+  "titulo": "Corte y dimensionado",
+  "img": "img.png",
+  "temas": {
+    "tema1": {
+      "id": 7,
+      "titulo": "Toma de medidas",
+      "descripcion": "-"
+    },
+    "tema2": {
+      "id": 8,
+      "titulo": "Uso de plantillas",
+      "descripcion": "-"
+    },
+    "tema3": {
+      "id": 9,
+      "titulo": "Uso de la sierra circular",
+      "descripcion": "-"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6655f9b4dd4dd328056ec5c1"
+  },
+  "titulo": "Ensamble y acabados",
+  "img": "img.png",
+  "temas": {
+    "tema1": {
+      "id": 10,
+      "titulo": "Encolado y atornillado",
+      "descripcion": "-"
+    },
+    "tema2": {
+      "id": 11,
+      "titulo": "Lijado",
+      "descripcion": "-"
+    },
+    "tema3": {
+      "id": 12,
+      "titulo": "Tinte y barniz",
+      "descripcion": "-"
+    }
+  }
+}]
