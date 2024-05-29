@@ -9,12 +9,16 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use("/curso",bakcursos);
 
-mongoose.connect("mongodb://localhost:27017/dbcarpinteria")
+const MONGO_DB_URL = "mongodb://host.docker.internal:27017/dbcarpinteria";
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "error de coneccion a MongoDB:"));
-db.once("open", () =>{
+
+mongoose.connect(MONGO_DB_URL, {
+}).then(response => {
+    console.log('conexión exitosa con MongoDB.')
+}).catch(error => {
+    console.log('Error in DB connection: ' + error)
 });
+
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}`);
