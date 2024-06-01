@@ -1,13 +1,21 @@
-FROM node
+#imagen a utilizar
+FROM node:latest
 
-WORKDIR /main
+#Ubicación donde se copiara el contenido
+WORKDIR /home/main
 
+
+#Copiar el package.json
 COPY package*.json ./
 
-RUN npm install
-
+#copiar el contenido de toda la carpeta por uso
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3002
 
+# Instalación de paquetes
+RUN npm install
+
+#Configuración para que el archivo corra al nomas instalarse
 CMD ["npm", "start"]
+

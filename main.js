@@ -1,22 +1,22 @@
 const express = require ("express");
+const cors = require("cors");
 const mongoose = require ("mongoose");
 const bodyParser = require ("body-parser");
 const bakcursos = require("./rutas/curso");
 
 const app = new express();
-const port = 3000;
+const port = 3002;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use("/curso",bakcursos);
 
-const MONGO_DB_URL = "mongodb://host.docker.internal:27017/dbcarpinteria";
+//conectarse a la base de datos
+mongoose.connect(process.env.MONGO_URL || 'mongodb://host.docker.internal:27017/dbcarpinteria')
 
-
-mongoose.connect(MONGO_DB_URL, {
-}).then(response => {
-    console.log('conexión exitosa con MongoDB.')
-}).catch(error => {
-    console.log('Error in DB connection: ' + error)
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "error de coneccion a MongoDB:"));
+db.once("open", () =>{
 });
 
 

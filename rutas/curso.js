@@ -1,4 +1,4 @@
-const express = require ("express");
+const express = require("express");
 const ruta = express.Router();
 const Curso = require("../modelos/bakcursos");
 
@@ -9,30 +9,30 @@ ruta.get("/", async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-}); 
+});
 
 ruta.post("/", async (req, res) => {
     const curso = new Curso({
         titulo: req.body.titulo,
         img: req.body.img,
         temas: {
-          tema1: {
-            id: req.body.temas.tema1.id,
-            titulo: req.body.temas.tema1.titulo,
-            descripcion: req.body.temas.tema1.descripcion
-          },
-          tema2: {
-            id: req.body.temas.tema2.id,
-            titulo: req.body.temas.tema2.titulo,
-            descripcion: req.body.temas.tema2.descripcion
-          },
-          tema3: {
-            id: req.body.temas.tema3.id,
-            titulo: req.body.temas.tema3.titulo,
-            descripcion: req.body.temas.tema3.descripcion
+            tema1: {
+                titulo: req.body.temas.tema1.titulo,
+                descripcion: req.body.temas.tema1.descripcion,
+                video: req.body.temas.tema1.video
+            },
+            tema2: {
+                titulo: req.body.temas.tema2.titulo,
+                descripcion: req.body.temas.tema2.descripcion,
+                video: req.body.temas.tema2.video
+            },
+            tema3: {
+                titulo: req.body.temas.tema3.titulo,
+                descripcion: req.body.temas.tema3.descripcion,
+                video: req.body.temas.tema3.video
             }
-          }    
-        });
+        }
+    });
     try {
         const nuevoCurso = await curso.save();
         res.status(201).json(nuevoCurso);
@@ -62,27 +62,47 @@ async function getCurso(req, res, next) {
 ruta.put("/:id", getCurso, async (req, res) => {
     if (req.body.titulo != null) {
         res.curso.titulo = req.body.titulo;
-    } if (req.body.img != null) {
+    }
+
+    if (req.body.img != null) {
         res.curso.img = req.body.img;
-    }if (req.body.temas.tema1.id != null) {
-            res.curso.temas.tema1.id = req.body.temas.tema1.id;
-    } if (req.body.temas.tema1.titulo != null) {
-        res.curso.temas.tema1.titulo = req.body.temas.tema1.titulo;
-    } if (req.body.temas.tema1.descripcion != null) {
-        res.curso.temas.tema1.descripcion = req.body.temas.tema1.descripcion;
-    }if (req.body.temas.tema2.id != null) {
-        res.curso.temas.tema2.id = req.body.temas.tema2.id;
-    } if (req.body.temas.tema2.titulo != null) {
-        res.curso.temas.tema2.titulo = req.body.temas.tema2.titulo;
-    } if (req.body.temas.tema2.descripcion != null) {
-        res.curso.temas.tema2.descripcion = req.body.temas.tema2.descripcion;
-    }if (req.body.temas.tema2.id != null) {
-        res.curso.temas.tema2.id = req.body.temas.tema2.id;
-    } if (req.body.temas.tema3.titulo != null) {
-        res.curso.temas.tema3.titulo = req.body.temas.tema3.titulo;
-    }if (req.body.temas.tema3.descripcion != null) {
-        res.curso.temas.tema3.descripcion = req.body.temas.tema3.descripcion;
-    }    
+    }
+
+    if (req.body.temas) {
+        if (req.body.temas.tema1) {
+            if (req.body.temas.tema1.titulo != null) {
+                res.curso.temas.tema1.titulo = req.body.temas.tema1.titulo;
+            }
+            if (req.body.temas.tema1.descripcion != null) {
+                res.curso.temas.tema1.descripcion = req.body.temas.tema1.descripcion;
+            }
+            if (req.body.temas.tema1.video != null) {
+                res.curso.temas.tema1.video = req.body.temas.tema1.video;
+            }
+        }
+        if (req.body.temas.tema2) {
+            if (req.body.temas.tema2.titulo != null) {
+                res.curso.temas.tema2.titulo = req.body.temas.tema2.titulo;
+            }
+            if (req.body.temas.tema2.descripcion != null) {
+                res.curso.temas.tema2.descripcion = req.body.temas.tema2.descripcion;
+            }
+            if (req.body.temas.tema1.video != null) {
+                res.curso.temas.tema1.video = req.body.temas.tema2.video;
+            }
+        }
+        if (req.body.temas.tema3) {
+            if (req.body.temas.tema3.titulo != null) {
+                res.curso.temas.tema3.titulo = req.body.temas.tema3.titulo;
+            }
+            if (req.body.temas.tema3.descripcion != null) {
+                res.curso.temas.tema3.descripcion = req.body.temas.tema3.descripcion;
+            }
+            if (req.body.temas.tema1.video != null) {
+                res.curso.temas.tema1.video = req.body.temas.tema3.video;
+            }
+        }
+    }
     try {
         const cursoActualizado = await res.curso.save();
         res.json(cursoActualizado);
@@ -99,10 +119,11 @@ ruta.delete('/:id', async (req, res) => {
         }
         res.json({
             message: 'curso eliminado con éxito',
-            data: cursoEliminado
         });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
+
+
 module.exports = ruta;
