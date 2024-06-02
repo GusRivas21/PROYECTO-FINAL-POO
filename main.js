@@ -5,7 +5,7 @@ const bodyParser = require ("body-parser");
 const bakcursos = require("./rutas/curso");
 
 const app = new express();
-const port = 3002;
+const port = 3001;
 
 app.use(cors());
 app.use(bodyParser.json());

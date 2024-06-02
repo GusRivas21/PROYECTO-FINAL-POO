@@ -11,7 +11,7 @@ COPY package*.json ./
 #copiar el contenido de toda la carpeta por uso
 COPY . .
 
-EXPOSE 3002
+EXPOSE 3001
 
 # Instalación de paquetes
 RUN npm install
