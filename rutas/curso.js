@@ -19,17 +19,20 @@ ruta.post("/", async (req, res) => {
             tema1: {
                 titulo: req.body.temas.tema1.titulo,
                 descripcion: req.body.temas.tema1.descripcion,
-                video: req.body.temas.tema1.video
+                video: req.body.temas.tema1.video,
+                miniatura: req.body.temas.tema1.miniatura
             },
             tema2: {
                 titulo: req.body.temas.tema2.titulo,
                 descripcion: req.body.temas.tema2.descripcion,
-                video: req.body.temas.tema2.video
+                video: req.body.temas.tema2.video,
+                miniatura: req.body.temas.tema2.miniatura
             },
             tema3: {
                 titulo: req.body.temas.tema3.titulo,
                 descripcion: req.body.temas.tema3.descripcion,
-                video: req.body.temas.tema3.video
+                video: req.body.temas.tema3.video,
+                miniatura: req.body.temas.tema3.miniatura
             }
         }
     });
@@ -79,6 +82,9 @@ ruta.put("/:id", getCurso, async (req, res) => {
             if (req.body.temas.tema1.video != null) {
                 res.curso.temas.tema1.video = req.body.temas.tema1.video;
             }
+            if (req.body.temas.tema1.miniatura != null) {
+                res.curso.temas.tema1.miniatura = req.body.temas.tema1.miniatura;
+            }
         }
         if (req.body.temas.tema2) {
             if (req.body.temas.tema2.titulo != null) {
@@ -87,8 +93,8 @@ ruta.put("/:id", getCurso, async (req, res) => {
             if (req.body.temas.tema2.descripcion != null) {
                 res.curso.temas.tema2.descripcion = req.body.temas.tema2.descripcion;
             }
-            if (req.body.temas.tema1.video != null) {
-                res.curso.temas.tema1.video = req.body.temas.tema2.video;
+            if (req.body.temas.tema2.video != null) {
+                res.curso.temas.tema2.video = req.body.temas.tema2.video;
             }
         }
         if (req.body.temas.tema3) {
@@ -98,8 +104,11 @@ ruta.put("/:id", getCurso, async (req, res) => {
             if (req.body.temas.tema3.descripcion != null) {
                 res.curso.temas.tema3.descripcion = req.body.temas.tema3.descripcion;
             }
-            if (req.body.temas.tema1.video != null) {
-                res.curso.temas.tema1.video = req.body.temas.tema3.video;
+            if (req.body.temas.tema3.video != null) {
+                res.curso.temas.tema3.video = req.body.temas.tema3.video;
+            }
+            if (req.body.temas.tema3.miniatura != null) {
+                res.curso.temas.tema3.miniatura = req.body.temas.tema3.miniatura;
             }
         }
     }

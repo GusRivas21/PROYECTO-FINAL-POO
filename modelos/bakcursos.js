@@ -7,17 +7,20 @@ const bakcursosSchema = new mongoose.Schema({
     tema1: {
       titulo: String,
       descripcion: String,
-      video: String
+      video: String,
+      miniatura: String
     },
     tema2: {
       titulo: String,
       descripcion: String,
-      video: String
+      video: String,
+      miniatura: String
     },
     tema3: {
       titulo: String,
       descripcion: String,
-      video: String
+      video: String,
+      miniatura: String
     }
   }
 });
